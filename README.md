@@ -7,7 +7,9 @@ Plugin name : check_memory which will checks the memory usage in a linux machine
 
 You can create your own plugin or you can download from Nagios: https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=3407&cf_id=24
 
-Once download keep the script in the tmp directory and then run the ansible playbook: ansible-playbook -i hosts check_mem.yml and you can configure the memory service in Nagios
+Once download keep the script in the tmp directory and then run the ansible playbook and you can configure the memory service in Nagios: 
+
+ansible-playbook -i hosts check_mem.yml 
 
 Example:
 ./check_memory.sh -u -w 80 -c 95

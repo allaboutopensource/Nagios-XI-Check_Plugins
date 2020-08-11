@@ -1,6 +1,5 @@
-# Nagios check_Memory Service For the Linux systems.
+# Nagios check_Memory Plugin For Linux systems.
 
-how to automate the check_memory service in Nagios.
 
 The Nagios Plugins for Linux are intended to be run by NRPE, the Nagios Remote Plugin Executor, that "allows you to remotely execute Nagios plugins on other Linux/Unix machines. This allows you to monitor remote machine metrics (disk usage, CPU load, etc.)."
 

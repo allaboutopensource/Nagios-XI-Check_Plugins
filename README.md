@@ -1,4 +1,4 @@
-# Nagios Check Plugins For Linux systems.
+# Nagios XI Check Plugins For Linux systems.
 
 
 The Nagios Plugins for Linux are intended to be run by NRPE, the Nagios Remote Plugin Executor, that "allows you to remotely execute Nagios plugins on other Linux/Unix machines. This allows you to monitor remote machine metrics (disk usage, CPU load, etc.)."

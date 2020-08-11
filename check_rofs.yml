@@ -1,0 +1,32 @@
+---
+
+- name: configuring Read Only File system service in nagios
+  hosts: all
+  become_method: sudo
+  become: true
+  user: root
+  gather_facts: true
+
+  tasks:
+
+   -  name: "Move check_ro_fs.sh to libexec folder"
+      command: mv /tmp/check_ro_fs.sh /usr/local/nagios/libexec/
+
+
+   -  name: Change file ownership, group and permissions
+      file:
+         path: /usr/local/nagios/libexec/check_ro_fs.sh
+         owner: nagios
+         group: nagios
+         mode: a+x
+
+
+   -  name: Add a line to a file
+      lineinfile:
+           path: /usr/local/nagios/etc/nrpe.cfg
+           line: command[check_ro_fs]= /usr/local/nagios/libexec/check_ro_fs.sh -p /
+
+   - name: Restart xinetd service
+     service:
+       name: xinetd
+       state: restarted

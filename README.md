@@ -1,4 +1,4 @@
-# Nagios check_Memory Plugin For Linux systems.
+# Nagios Check Plugins For Linux systems.
 
 
 The Nagios Plugins for Linux are intended to be run by NRPE, the Nagios Remote Plugin Executor, that "allows you to remotely execute Nagios plugins on other Linux/Unix machines. This allows you to monitor remote machine metrics (disk usage, CPU load, etc.)."
@@ -12,7 +12,17 @@ Once download keep the script in the tmp directory and then run the ansible play
 ansible-playbook -i hosts check_mem.yml 
 
 Example:
+
+For memory Check:
+
 ./check_memory.sh -u -w 80 -c 95
 w: warning
 c : critical
 u : used
+
+For read only file system check :
+
+/check_ro_fs.sh -p /
+OK: File system / appears to be ok
+
+p : path

@@ -1,0 +1,31 @@
+---
+
+- name: configuring memory service in nagios
+  hosts: all
+  become_method: sudo
+  become: true
+  user: root
+  gather_facts: true
+
+  tasks:
+
+   -  name: "Move check_mem.pl to libexec folder"
+      command: mv /tmp/check_mem.pl /usr/local/nagios/libexec/
+
+
+   -  name: Change file ownership, group and permissions
+      file:
+         path: /usr/local/nagios/libexec/check_mem.pl
+         owner: nagios
+         group: nagios
+
+
+   -  name: Add a line to a file
+      lineinfile:
+           path: /usr/local/nagios/etc/nrpe.cfg
+           line: command[check_mem]= /usr/local/nagios/libexec/check_mem.pl -u -w 85 -c 90
+
+   - name: Restart xinetd service
+     service:
+       name: xinetd
+       state: restarted
